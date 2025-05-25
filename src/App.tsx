@@ -39,7 +39,7 @@ const App: React.FC = () => {
           categories: parsedData.categories || DEFAULT_CATEGORIES
         });
       } catch (e) {
-        toast.error("Failed to load saved data");
+        toast.error("Не удалось загрузить сохраненные данные");
       }
     }
   }, []);
@@ -77,7 +77,7 @@ const App: React.FC = () => {
       toast.success('задача синхронизирована с Google Calendar!');
     } catch (error) {
       toast.error('Ошибка синхрнизации calendar');
-      console.error('Sync error:', error);
+      console.error('Ошибка синхронизации:', error);
     }
   }, [data.tasks]);
 
@@ -110,7 +110,7 @@ const App: React.FC = () => {
 
     case 'calendar':
       if (!task.dueDate) {
-        toast.error('Task needs a due date to sync with calendar');
+        toast.error('Не удалось загрузить сохраненные данные. Для синхронизации с календарем задаче требуется установленная дата выполнения');
         return;
       }
       handleSyncWithCalendar(taskId);
@@ -134,8 +134,8 @@ const App: React.FC = () => {
               toast.success('Задача удалена из Google Calendar');
             }
           } catch (error) {
-            console.error('Failed to delete from calendar', error);
-            toast.error('Failed to delete from calendar');
+            console.error('Ошибка удаления из календаря', error);
+            toast.error('Ошибка удаления из календаря');
           }
         }
 
@@ -143,7 +143,7 @@ const App: React.FC = () => {
           ...prev,
           tasks: prev.tasks.filter(t => t.id !== taskId)
         }));
-        toast.info('Task deleted');
+        toast.info('Задача удалена');
       };
       deleteTask();
       break;
