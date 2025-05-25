@@ -24,7 +24,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, onAddComment 
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment..."
+          placeholder="Добавьте комментарий..."
           rows={3}
           required
         />
